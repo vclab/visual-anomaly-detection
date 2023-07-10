@@ -6,7 +6,6 @@
 .vscode
 __pycache__
 {toxworkdir}
-datasets/
 embeddings/
 lightning_logs/
 lightning_test/
