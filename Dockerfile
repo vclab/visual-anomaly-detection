@@ -76,4 +76,4 @@ WORKDIR /home/user
 
 RUN git clone https://github.com/openvinotoolkit/anomalib.git
 WORKDIR /anomalib
-pip install -e .
+RUN pip install -e .
