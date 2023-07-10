@@ -23,10 +23,10 @@ def get_parser() -> ArgumentParser:
         ArgumentParser: The parser object.
     """
     parser = ArgumentParser()
-    parser.add_argument("--config", type=Path, required=True, help="Path to a config file")
-    parser.add_argument("--weights", type=Path, required=True, help="Path to model weights")
-    parser.add_argument("--input", type=Path, required=True, help="Path to image(s) to infer.")
-    parser.add_argument("--output", type=str, required=False, help="Path to save the output image(s).")
+    parser.add_argument("--config", type=Path, required=True, default="src/anomalib/models/patchcore/config.yaml", help="Path to a config file")
+    parser.add_argument("--weights", type=Path, required=True, default="results/patchcore/custom/run/weights/lightning/model.ckpt", help="Path to model weights")
+    parser.add_argument("--input", type=Path, required=True, default="datasets/custom/check/", help="Path to image(s) to infer.")
+    parser.add_argument("--output", type=str, required=True, default="results/patchcore/custom/images", help="Path to save the output image(s).")
     parser.add_argument(
         "--visualization_mode",
         type=str,
