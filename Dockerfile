@@ -74,6 +74,7 @@ RUN pip install --no-cache-dir -r /tmp/anomalib/requirements/dev.txt
 
 WORKDIR /home/user
 
-RUN git clone https://github.com/Hamoon1987/my_anomalib.git
+# RUN git clone https://github.com/Hamoon1987/my_anomalib.git
 WORKDIR /anomalib
+COPY . /anomalib
 RUN pip install anomalib
