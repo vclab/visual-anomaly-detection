@@ -5,7 +5,7 @@ ARG HTTP_PROXY
 ARG HTTPS_PROXY
 ARG NO_PROXY
 
-FROM nvidia/cuda:12.2.0-devel-ubuntu20.04 AS python_base_cuda11.4
+FROM nvidia/cuda:11.4.3-devel-ubuntu20.04 AS python_base_cuda11.4
 LABEL maintainer="Anomalib Development Team"
 
 # Setup proxies
@@ -74,6 +74,6 @@ RUN pip install --no-cache-dir -r /tmp/anomalib/requirements/dev.txt
 
 WORKDIR /home/user
 
-RUN git clone https://github.com/openvinotoolkit/anomalib.git
+RUN git clone https://github.com/Hamoon1987/my_anomalib.git
 WORKDIR /anomalib
-RUN pip install -e .
+RUN pip install anomalib
