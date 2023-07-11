@@ -7,4 +7,4 @@
 5- Put the normal, abnormal, and test images in ```dataset/custom/normal```, ```dataset/custom/abnormal```, and ```dataset/custom/check``` folders  
 6- To trian the model: ```python tools/train.py --model patchcore```  
 7- To check the new images: ```python tools/inference/lightning_inference.py```  
-8- Check the results in ```results/patchcore/custom/imagescd```  
+8- Check the results in ```results/patchcore/custom/images```  
