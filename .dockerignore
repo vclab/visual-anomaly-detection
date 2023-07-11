@@ -1,5 +1,6 @@
 *.dot
 .git
+datasets/
 .idea
 .pytest_cache
 .tox

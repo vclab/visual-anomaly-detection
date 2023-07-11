@@ -72,9 +72,10 @@ RUN pip install --no-cache-dir -r /tmp/anomalib/requirements/openvino.txt
 COPY ./requirements/dev.txt /tmp/anomalib/requirements/dev.txt
 RUN pip install --no-cache-dir -r /tmp/anomalib/requirements/dev.txt
 
+# WORKDIR /home/user/my_anomalib
 WORKDIR /home/user
-
-# RUN git clone https://github.com/Hamoon1987/my_anomalib.git
-WORKDIR /anomalib
-COPY . /anomalib
+RUN git clone https://github.com/Hamoon1987/my_anomalib.git
+# COPY . /home/user/my_anomalib
+WORKDIR /home/user/my_anomalib
 RUN pip install anomalib
+RUN /bin/bash
