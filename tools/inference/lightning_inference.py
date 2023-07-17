@@ -23,10 +23,10 @@ def get_parser() -> ArgumentParser:
         ArgumentParser: The parser object.
     """
     parser = ArgumentParser()
-    parser.add_argument("--config", type=Path, required=False, default="src/anomalib/models/patchcore/config.yaml", help="Path to a config file")
-    parser.add_argument("--weights", type=Path, required=False, default="results/patchcore/custom/run/weights/lightning/model.ckpt", help="Path to model weights")
-    parser.add_argument("--input", type=Path, required=False, default="datasets/custom/check/", help="Path to image(s) to infer.")
-    parser.add_argument("--output", type=str, required=False, default="results/patchcore/custom/images", help="Path to save the output image(s).")
+    parser.add_argument("--model", type=str, required=True, default="patchcore", help="Path to a config file")
+    parser.add_argument("--weights", type=Path, required=True, help="Path to model weights")
+    parser.add_argument("--input", type=Path, required=True, help="Path to image(s) to infer.")
+    parser.add_argument("--output", type=str, required=False, help="Path to save the output image(s).")
     parser.add_argument(
         "--visualization_mode",
         type=str,
@@ -47,7 +47,7 @@ def get_parser() -> ArgumentParser:
 
 def infer(args: Namespace):
     """Run inference."""
-    config = get_configurable_parameters(config_path=args.config)
+    config = get_configurable_parameters(config_path="src/anomalib/models/" + args.model + "/config.yaml")
     config.trainer.resume_from_checkpoint = str(args.weights)
     config.visualization.show_images = args.show
     config.visualization.mode = args.visualization_mode
