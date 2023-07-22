@@ -31,8 +31,8 @@ def get_parser() -> ArgumentParser:
         ArgumentParser: The parser object.
     """
     parser = ArgumentParser()
-    parser.add_argument("--model", type=str, required=True, default="padim", help="Name of the algorithm to train/test")
-    parser.add_argument("--config", type=str, required=False, help="Path to a model config file")
+    parser.add_argument("--model", type=str, required=False, default="patchcore", help="Name of the algorithm to train/test")
+    parser.add_argument("--config", type=str, required=False, default="src/anomalib/models/patchcore/config.yaml", help="Path to a model config file")
     parser.add_argument("--log-level", type=str, default="INFO", help="<DEBUG, INFO, WARNING, ERROR>")
 
     return parser

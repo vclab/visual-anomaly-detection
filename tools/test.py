@@ -20,9 +20,9 @@ def get_parser() -> ArgumentParser:
         ArgumentParser: The parser object.
     """
     parser = ArgumentParser()
-    parser.add_argument("--model", type=str, default="stfpm", help="Name of the algorithm to train/test")
-    parser.add_argument("--config", type=str, required=False, help="Path to a model config file")
-    parser.add_argument("--weight_file", type=str, default="weights/model.ckpt")
+    parser.add_argument("--model", type=str, required=False, default="patchcore", help="Name of the algorithm to train/test")
+    parser.add_argument("--config", type=str, required=False, default="src/anomalib/models/patchcore/config.yaml", help="Path to a model config file")
+    parser.add_argument("--weight_file", type=str, required=False, default= "results/patchcore/custom/run/weights/lightning/model.ckpt")
 
     return parser
 
