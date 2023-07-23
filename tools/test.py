@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 from argparse import ArgumentParser, Namespace
-
+import yaml
 from pytorch_lightning import Trainer, seed_everything
 
 from anomalib.config import get_configurable_parameters
@@ -20,9 +20,10 @@ def get_parser() -> ArgumentParser:
         ArgumentParser: The parser object.
     """
     parser = ArgumentParser()
-    parser.add_argument("--model", type=str, required=False, default="patchcore", help="Name of the algorithm to train/test")
-    parser.add_argument("--config", type=str, required=False, default="src/anomalib/models/patchcore/config.yaml", help="Path to a model config file")
-    parser.add_argument("--weight_file", type=str, required=False, default= "results/patchcore/custom/run/weights/lightning/model.ckpt")
+    parser.add_argument("--tag", type=str, required=False, default="patchcore_custom", help="Tag name")
+    # parser.add_argument("--model", type=str, required=False, default="patchcore", help="Name of the algorithm to train/test")
+    # parser.add_argument("--config", type=str, required=False, default="src/anomalib/models/patchcore/config.yaml", help="Path to a model config file")
+    # parser.add_argument("--weight_file", type=str, required=False, default= "results/patchcore/custom/run/weights/lightning/model.ckpt")
 
     return parser
 
@@ -33,10 +34,14 @@ def test(args: Namespace):
     Args:
         args (Namespace): The arguments from the command line.
     """
+    config_path = "my_configs/" + args.tag +".yaml"
+    with open(config_path) as f:
+        list_doc = yaml.safe_load(f)
+
     config = get_configurable_parameters(
-        model_name=args.model,
-        config_path=args.config,
-        weight_file=args.weight_file,
+        model_name=list_doc["dataset"]['model'],
+        config_path=config_path,
+        weight_file=list_doc["dataset"]['weights'],
     )
 
     if config.project.seed:
