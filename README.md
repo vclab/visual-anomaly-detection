@@ -9,8 +9,15 @@ You need a linux server with gpu. Install Docker, NVIDIA Container Toolkit, VSCo
 4- Attach to the running container  
   
 ## Default run
-1- We need normal and abnormal images of the product to train the model. Put the normal, abnormal, and the images you want to check afterwards in ```datasets/<product_name>/normal```, ```datasets/<product_name>/abnormal```, and ```datasets/<product_name>/check``` folders respectively    
+1- We need normal and abnormal images of the product to train the model. Put the normal, abnormal, and the images you want to check afterwards in ```datasets/custom/normal```, ```datasets/custom/abnormal```, and ```datasets/custom/check``` folders respectively    
 2- To trian the model: ```python tools/train.py```  
 3- To check the new images: ```python tools/inference/lightning_inference.py```  
 Check the results in ```results/patchcore/custom/checkimages```  
 4- To evaluate the model: ```python tools/test.py```  
+## Basic run
+1- Put the normal, abnormal, and the images you want to check afterwards in ```datasets/<product_name>/normal```, ```datasets/<product_name>/abnormal```, and ```datasets/<product_name>/check``` folders respectively   
+Example: ```datasets/cable/normal```, ```datasets/cable/abnormal```, and ```datasets/cable/check```  
+2- Set the training configuration: python changeConfig.py --product <product_name> --path ./datasets/<product_name> --model <model_name>  --tag <tag>  
+3- To trian the model: ```python tools/train.py --tag <tag>```
+
+

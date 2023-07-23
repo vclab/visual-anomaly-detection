@@ -8,9 +8,10 @@ def get_parser() -> ArgumentParser:
         ArgumentParser: The parser object.
     """
     parser = ArgumentParser()
-    parser.add_argument("--model", required=True, type=str, default="padim", help="Name of the algorithm to train/test")
-    parser.add_argument("--product", required=True, type=str, default="INFO", help="product name")
-    parser.add_argument("--path", required=True, type=str, default="INFO", help="Path to the images")
+    parser.add_argument("--model", required=True, type=str, help="Name of the algorithm to train/test")
+    parser.add_argument("--product", required=True, type=str, help="product name")
+    parser.add_argument("--path", required=True, type=str, help="Path to the images")
+    parser.add_argument("--tag", required=True, type=str, help="Tag name")
 
     return parser
 
@@ -20,8 +21,14 @@ def changeconfig(args):
         list_doc = yaml.safe_load(f)
     list_doc["dataset"]['name'] = args.product
     list_doc["dataset"]['path'] = args.path
-
-    with open("src/anomalib/models/patchcore/config.yaml", "w") as f:
+    list_doc["dataset"]['tag'] = args.tag
+    list_doc["dataset"]['model'] = args.model
+    list_doc['dataset']['input'] = args.path + "/check/"
+    list_doc['dataset']['output'] = "results/" + args.model + '/' + args.product + "/checkimages"
+    list_doc['dataset']['weights'] = "results/" + args.model + '/' + args.product + "/run/weights/lightning/model.ckpt"
+    
+    config_path = "my_configs/" + args.tag +".yaml"
+    with open(config_path, "w") as f:
         yaml.dump(list_doc, f)
 
 

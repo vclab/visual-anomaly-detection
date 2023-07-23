@@ -7,7 +7,7 @@ results.
 
 # Copyright (C) 2022 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
-
+import yaml
 import logging
 import warnings
 from argparse import ArgumentParser, Namespace
@@ -31,8 +31,9 @@ def get_parser() -> ArgumentParser:
         ArgumentParser: The parser object.
     """
     parser = ArgumentParser()
-    parser.add_argument("--model", type=str, required=False, default="patchcore", help="Name of the algorithm to train/test")
-    parser.add_argument("--config", type=str, required=False, default="src/anomalib/models/patchcore/config.yaml", help="Path to a model config file")
+    parser.add_argument("--tag", type=str, required=False, default="patchcore_custom", help="Tag name")
+    # parser.add_argument("--model", type=str, required=False, default="patchcore", help="Name of the algorithm to train/test")
+    # parser.add_argument("--config", type=str, required=False, default="src/anomalib/models/patchcore/config.yaml", help="Path to a model config file")
     parser.add_argument("--log-level", type=str, default="INFO", help="<DEBUG, INFO, WARNING, ERROR>")
 
     return parser
@@ -45,12 +46,16 @@ def train(args: Namespace):
         args (Namespace): The arguments from the command line.
     """
 
+    config_path = "my_configs/" + args.tag +".yaml"
+    with open(config_path) as f:
+        list_doc = yaml.safe_load(f)
+        
     configure_logger(level=args.log_level)
 
     if args.log_level == "ERROR":
         warnings.filterwarnings("ignore")
 
-    config = get_configurable_parameters(model_name=args.model, config_path=args.config)
+    config = get_configurable_parameters(model_name=list_doc["dataset"]['model'], config_path=config_path)
     if config.project.get("seed") is not None:
         seed_everything(config.project.seed)
 

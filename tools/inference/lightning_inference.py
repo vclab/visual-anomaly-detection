@@ -2,7 +2,7 @@
 
 # Copyright (C) 2022 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
-
+import yaml
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
 
@@ -23,10 +23,12 @@ def get_parser() -> ArgumentParser:
         ArgumentParser: The parser object.
     """
     parser = ArgumentParser()
-    parser.add_argument("--model", type=str, required=False, default="patchcore", help="Path to a config file")
-    parser.add_argument("--weights", type=Path, required=False, default= "results/patchcore/custom/run/weights/lightning/model.ckpt", help="Path to model weights")
-    parser.add_argument("--input", type=Path, required=False, default= "datasets/custom/check", help="Path to image(s) to infer.")
-    parser.add_argument("--output", type=str, required=False, default= "results/patchcore/custom/images", help="Path to save the output image(s).")
+    # parser.add_argument("--model", type=str, required=False, default="patchcore", help="Path to a config file")
+    # parser.add_argument("--weights", type=Path, required=False, default= "results/patchcore/custom/run/weights/lightning/model.ckpt", help="Path to model weights")
+    # parser.add_argument("--input", type=Path, required=False, default= "datasets/custom/check", help="Path to image(s) to infer.")
+    # parser.add_argument("--output", type=str, required=False, default= "results/patchcore/custom/images", help="Path to save the output image(s).")
+    parser.add_argument("--tag", type=str, required=False, default="patchcore_custom", help="Tag name")
+
     parser.add_argument(
         "--visualization_mode",
         type=str,
@@ -47,13 +49,17 @@ def get_parser() -> ArgumentParser:
 
 def infer(args: Namespace):
     """Run inference."""
-    config = get_configurable_parameters(config_path="src/anomalib/models/" + args.model + "/config.yaml")
-    config.trainer.resume_from_checkpoint = str(args.weights)
+    config_path = "my_configs/" + args.tag +".yaml"
+    with open(config_path) as f:
+        list_doc = yaml.safe_load(f)
+
+    config = get_configurable_parameters(config_path=config_path)
+    config.trainer.resume_from_checkpoint = str(list_doc["dataset"]['weights'])
     config.visualization.show_images = args.show
     config.visualization.mode = args.visualization_mode
-    if args.output:  # overwrite save path
+    if list_doc["dataset"]['output']:  # overwrite save path
         config.visualization.save_images = True
-        config.visualization.image_save_path = args.output
+        config.visualization.image_save_path = list_doc["dataset"]['output']
     else:
         config.visualization.save_images = False
 
@@ -75,7 +81,7 @@ def infer(args: Namespace):
 
     # create the dataset
     dataset = InferenceDataset(
-        args.input, image_size=tuple(config.dataset.image_size), transform=transform  # type: ignore
+        list_doc["dataset"]['input'], image_size=tuple(config.dataset.image_size), transform=transform  # type: ignore
     )
     dataloader = DataLoader(dataset)
 
