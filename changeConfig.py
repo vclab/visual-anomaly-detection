@@ -9,8 +9,8 @@ def get_parser() -> ArgumentParser:
     """
     parser = ArgumentParser()
     parser.add_argument("--model", required=True, type=str, help="Name of the algorithm to train/test")
-    parser.add_argument("--product", required=True, type=str, help="product name")
-    parser.add_argument("--path", required=True, type=str, help="Path to the images")
+    parser.add_argument("--product", required=False, type=str, default='custom', help="product name")
+    parser.add_argument("--path", required=False, type=str, default='datasets/custom', help="Path to the images")
     parser.add_argument("--tag", required=True, type=str, help="Tag name")
 
     return parser
