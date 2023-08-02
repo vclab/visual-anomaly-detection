@@ -3,7 +3,7 @@
 You need a linux server with gpu. Install Docker, NVIDIA Container Toolkit, VSCode and Remote-Containers extension  
   
 ## Preparing the environement  
-1- Get the latest code: ```git clone --branch version01 --single-branch https://github.com/Hamoon1987/my_anomalib.git``` and afterwards ```cd my_anomalib```    
+1- Get the latest code: ```git clone --branch version02 --single-branch https://github.com/Hamoon1987/my_anomalib.git``` and afterwards ```cd my_anomalib```    
 2- Build the docker image: ```docker build . --tag=anomalib```  
 3- Run the docker image: ```docker run -it -d --gpus all --name my_anomalib anomalib```  
 4- Attach to the running container  
