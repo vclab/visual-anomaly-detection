@@ -78,4 +78,5 @@ RUN git clone --branch version02 --single-branch https://github.com/Hamoon1987/m
 # COPY . /home/user/my_anomalib
 WORKDIR /home/user/my_anomalib
 RUN pip install anomalib
+EXPOSE 4000
 RUN /bin/bash
