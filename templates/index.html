@@ -1,0 +1,61 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to my simple web page</h1>
+        <form method="post">
+            <label for="dropdown">Select an option:</label>
+            <select id="dropdown" name="dropdown">
+                {% for option in dropdown_options %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+        {% if images %}
+        <div class="image-container">
+            {% for image in images %}
+            <!-- <p>{{path + '/' + image}}</p> -->
+            <img class="fade" src="{{ url_for('serve_image', filename=path + '/' + image) }}" alt="Image">
+            <!-- <img src="{{ url_for('serve_image', filename = path + '/' + image) }}" alt="Image"> -->
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No images found in the selected folder.</p>
+        {% endif %}
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var slideIndex = 0;
+            var slides = document.getElementsByClassName("fade");
+            var intervalId;
+    
+            function showSlides() {
+                if (slides.length === 0) {
+                    return;
+                }
+    
+                slides[slideIndex].style.display = "none";
+                slideIndex = (slideIndex + 1) % slides.length;
+                slides[slideIndex].style.display = "block";
+    
+                if (slideIndex === 0) {
+                    clearInterval(intervalId); // Clear the interval after one round
+                }
+            }
+    
+            intervalId = setInterval(showSlides, 2000); // Start the slideshow
+        });
+    </script>
+    
+    
+</body>
+</html>
+
