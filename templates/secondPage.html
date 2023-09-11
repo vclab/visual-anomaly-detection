@@ -1,0 +1,46 @@
+secondPage.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Anomaly Detection</h1>
+        <p>Tag: {{ tag }}</p>
+        <!-- Form to submit the address -->
+        <form method="post" action="/submit_address" enctype="multipart/form-data">
+            <div class="input-box02" id="input-box02">
+                <div class="path-label">
+                    <label for="address">Path to images:</label>
+                </div>
+                <!-- <label for="address">Path to images:</label> -->
+                <div class="address-input">
+                    <input type="text" id="address" name="address" value="{{ path }}">
+                </div>
+                <!-- <input type="text" id="address" name="address" value="{{ path }}"> -->
+            </div>
+        </form>
+            <button type="submit" name="submit">Submit</button>
+            <!-- <button type="submit" name="upload">Upload</button> -->
+            <form method="post" action="/upload_folder" enctype="multipart/form-data">
+                <label for="folder_path">Local Folder Path:</label>
+                <input type="file" id="folder_path" name="folder_path" multiple>
+                <button type="submit">Upload Folder</button>
+            </form>
+            
+            
+            
+
+
+        <a href="/" class="back-button">Go Back to Home</a>
+    </div>
+
+</body>
+</html>
+

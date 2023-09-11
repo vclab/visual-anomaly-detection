@@ -23,7 +23,7 @@ def changeconfig(args):
     list_doc["dataset"]['path'] = args.path
     list_doc["dataset"]['tag'] = args.tag
     list_doc["dataset"]['model'] = args.model
-    list_doc['dataset']['input'] = args.path + "/check/"
+    list_doc['dataset']['input'] = args.path  # + "/check/"
     list_doc['dataset']['output'] = "results/" + args.model + '/' + args.product + "/checkimages"
     list_doc['dataset']['weights'] = "results/" + args.model + '/' + args.product + "/run/weights/lightning/model.ckpt"
     

@@ -21,6 +21,7 @@ body {
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; 
 }
 
 h1 {
@@ -50,6 +51,7 @@ select {
 }
 
 button {
+    padding-top: 40px;
     padding: 10px 20px;
     font-size: 16px;
     background-color: #4CAF50;
@@ -67,8 +69,28 @@ button:active {
     background-color: #3e8e41;
 }
 .image-container {
+    /* padding-top: 20%; */
     max-width: 800px; /* Adjust width as needed */
     max-height: 500px; /* Adjust height as needed */
     position: relative;
     margin: auto;
+    margin-top: 20px;
+}
+
+#address {
+    width: 100%;
+}
+
+/* #input-box02 {
+    margin-bottom: 20px; 
+} */
+
+.input-box02 {
+    margin-bottom: 20px; 
+    display: flex;
+    align-items: center; /* Vertically center the elements */
+}
+
+.path-label {
+    margin-right: 10px; /* Add some spacing between the label and the input */
 }

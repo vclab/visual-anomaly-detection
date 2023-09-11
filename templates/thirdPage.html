@@ -1,4 +1,4 @@
-index.html
+thirdPage.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,27 +9,20 @@ index.html
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to my simple web page</h1>
-        <form method="post">
-            <label for="dropdown">Select an option:</label>
-            <select id="dropdown" name="dropdown">
-                {% for option in dropdown_options %}
-                <option value="{{ option }}">{{ option }}</option>
-                {% endfor %}
-            </select>
-            <button type="submit">Submit</button>
-        </form>
+        <h1>Anomaly Detection</h1>
+        <p>Tag: {{ tag }}</p>
+        <p>Images: {{ address }}</p>
+        <a href="/" class="back-button">Go Back to Home</a>
         {% if images %}
         <div class="image-container">
             {% for image in images %}
-            <!-- <p>{{path + '/' + image}}</p> -->
-            <img class="fade" src="{{ url_for('serve_image', filename=path + '/' + image) }}" alt="Image">
-            <!-- <img src="{{ url_for('serve_image', filename = path + '/' + image) }}" alt="Image"> -->
+            <img class="fade" src="{{ url_for('serve_image', filename= results_path + '/' + image) }}" alt="Image">
             {% endfor %}
         </div>
         {% else %}
         <p>No images found in the selected folder.</p>
         {% endif %}
+        
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

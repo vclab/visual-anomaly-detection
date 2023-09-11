@@ -1,0 +1,48 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to my simple web page</h1>
+        <form  method="post" id="my-form">
+            <label for="dropdown">Please select from the available tags:</label>
+            <select id="dropdown" name="dropdown">
+                {% for option in dropdown_options %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+
+        
+        <!-- <div class="input-box" id="input-box">
+            <label for="custom-input">Custom Value:</label>
+            <input type="text" id="custom-input" name="custom_input" value="{{ path }}" placeholder="Address">
+        </div> -->
+
+    </div>
+
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var form = document.getElementById("my-form");
+            var dropdown = document.getElementById("dropdown");
+            var inputBox = document.getElementById("custom-input");
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                inputBox.style.display = "block"; // Show the input box
+            });
+        });
+    </script> -->
+    
+    
+    
+</body>
+</html>
+

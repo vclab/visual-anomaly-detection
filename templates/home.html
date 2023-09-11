@@ -1,0 +1,28 @@
+home.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Anomaly Detection</h1>
+        <form action="{{ url_for('predict')}}" method="post" id="my-form">
+            <label for="dropdown">Please select from the available tags:</label>
+            <select id="dropdown" name="dropdown">
+                {% for option in dropdown_options %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Next</button>
+        </form>
+    </div>
+
+    
+    
+    
+</body>
+</html>
