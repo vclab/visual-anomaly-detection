@@ -15,23 +15,32 @@ secondPage.html
         <p>Tag: {{ tag }}</p>
         <!-- Form to submit the address -->
         <form method="post" action="/submit_address" enctype="multipart/form-data">
+            <div class = "label01" id="label01">
+                <label for="address">Path to images on the server:</label>
+            </div>
+            
             <div class="input-box02" id="input-box02">
-                <div class="path-label">
-                    <label for="address">Path to images:</label>
-                </div>
-                <!-- <label for="address">Path to images:</label> -->
-                <div class="address-input">
-                    <input type="text" id="address" name="address" value="{{ path }}">
-                </div>
-                <!-- <input type="text" id="address" name="address" value="{{ path }}"> -->
+                <input type="text" id="address" name="address" value="{{ path }}">
+                <button type="submit" name="submit">Submit</button>
             </div>
         </form>
-            <button type="submit" name="submit">Submit</button>
-            <!-- <button type="submit" name="upload">Upload</button> -->
-            <form method="post" action="/upload_folder" enctype="multipart/form-data">
+            
+
+            
+            <!-- <form method="post" action="/upload_folder" enctype="multipart/form-data">
                 <label for="folder_path">Local Folder Path:</label>
                 <input type="file" id="folder_path" name="folder_path" multiple>
                 <button type="submit">Upload Folder</button>
+            </form> -->
+
+            <form method="post" action="/upload_folder" enctype="multipart/form-data">
+                <label for="folder_path">Or choose images on your local machine:</label>
+                <div class="input-box03">
+                    
+                    <input type="file" id="folder_path" name="folder_path" multiple>
+                    <button type="submit">Submit</button>
+                </div>
+                
             </form>
             
             
