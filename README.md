@@ -1,10 +1,12 @@
 # Anomaly Detection - PatchCore
 
 ## Introduction
-Anomalib is a deep learning library with the goal of gathering cutting-edge anomaly detection techniques for assessing performance on both publicly available and private datasets. It offers a variety of pre-built implementations of anomaly detection algorithms discussed in recent research, along with a toolkit to streamline the creation and utilization of customized models. The objective of this repository is to streamline the deployment process for the Anomalib library. We leverage Docker and Flask to offer a straightforward installation and create a more user-friendly environment. You need a linux server with gpu. Install Docker, NVIDIA Container Toolkit, VSCode and Remote-Containers extension.  
+Anomalib is a deep learning library with the goal of gathering cutting-edge anomaly detection techniques for assessing performance on both publicly available and private datasets. It offers a variety of pre-built implementations of anomaly detection algorithms discussed in recent research, along with a toolkit to streamline the creation and utilization of customized models. The objective of this repository is to streamline the deployment process for the Anomalib library. We leverage Docker and Flask to offer a straightforward installation and create a more user-friendly environment. You need a linux server with gpu. Install Docker, NVIDIA Container Toolkit, VSCode and Remote-Containers extension. 
+ 
 <p align="center">
 	<img width="750" height="300" src="media/technology_used.jpg">
 </p>
+
 ## Preparing the environement  
 1- Get the latest code: ```git clone --branch version02 --single-branch https://github.com/Hamoon1987/my_anomalib.git``` and afterwards ```cd my_anomalib```    
 2- Build the docker image: ```docker build . --tag=anomalib```  
