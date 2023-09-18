@@ -23,13 +23,13 @@ Example:  ```python tools/test.py --tag patchcore_cable_v01```
 1- After training the models, run the app: ```python app.py```  
 2- Choose the model tag from the dropdown menu  
 <p align="center">
-	<img width="450" height="300" src="media/first.jpg">
+	<img width="450" height="200" src="media/first.jpg">
 </p>
 3- Set the path to the inference images on the server or choose the images from your local machine   
 <p align="center">
-	<img width="450" height="300" src="media/second.jpg">
+	<img width="450" height="200" src="media/second.jpg">
 </p>
-4- The result will be shown afterwards:  
+4- The results will be shown afterwards:  
 <p align="center">
 	<img width="450" height="300" src="media/third.jpg">
 </p>
