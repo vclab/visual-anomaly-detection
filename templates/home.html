@@ -10,7 +10,7 @@ home.html
 <body>
     <div class="container">
         <h1>Anomaly Detection</h1>
-        <form action="{{ url_for('predict')}}" method="post" id="my-form">
+        <form action="{{ url_for('predict')}}" method="post" id="my-form">  
             <label for="dropdown">Please select from the available tags:</label>
             <select id="dropdown" name="dropdown">
                 {% for option in dropdown_options %}

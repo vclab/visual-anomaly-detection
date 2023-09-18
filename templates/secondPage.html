@@ -18,35 +18,22 @@ secondPage.html
             <div class = "label01" id="label01">
                 <label for="address">Path to images on the server:</label>
             </div>
-            
             <div class="input-box02" id="input-box02">
                 <input type="text" id="address" name="address" value="{{ path }}">
                 <button type="submit" name="submit">Submit</button>
             </div>
         </form>
             
-
-            
-            <!-- <form method="post" action="/upload_folder" enctype="multipart/form-data">
-                <label for="folder_path">Local Folder Path:</label>
-                <input type="file" id="folder_path" name="folder_path" multiple>
-                <button type="submit">Upload Folder</button>
-            </form> -->
-
-            <form method="post" action="/upload_folder" enctype="multipart/form-data">
-                <label for="folder_path">Or choose images on your local machine:</label>
-                <div class="input-box03">
-                    
-                    <input type="file" id="folder_path" name="folder_path" multiple>
-                    <button type="submit">Submit</button>
-                </div>
+        <form method="post" action="/upload_folder" enctype="multipart/form-data">
+            <label for="folder_path">Or choose images on your local machine:</label>
+            <div class="input-box03">
                 
-            </form>
+                <input type="file" id="folder_path" name="folder_path" multiple>
+                <button type="submit">Submit</button>
+            </div>
             
+        </form>
             
-            
-
-
         <a href="/" class="back-button">Go Back to Home</a>
     </div>
 

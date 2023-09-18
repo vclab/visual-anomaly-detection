@@ -4,7 +4,7 @@ dataset:
   extensions: null
   format: folder
   image_size: 256
-  input: media/bottle/
+  input: datasets/bottle/check/
   mask: null
   model: patchcore
   name: bottle
@@ -13,7 +13,7 @@ dataset:
   normalization: imagenet
   num_workers: 2
   output: results/patchcore/bottle/checkimages
-  path: media/bottle/
+  path: datasets/bottle/check/
   split_ratio: 0.2
   tag: patchcore_bottle
   task: classification

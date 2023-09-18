@@ -4,7 +4,7 @@ dataset:
   extensions: null
   format: folder
   image_size: 256
-  input: datasets/cable/check/
+  input: media/cable/
   mask: null
   model: patchcore
   name: cable
@@ -13,7 +13,7 @@ dataset:
   normalization: imagenet
   num_workers: 2
   output: results/patchcore/cable/checkimages
-  path: datasets/cable/check/
+  path: media/cable/
   split_ratio: 0.2
   tag: patchcore_cable
   task: classification
