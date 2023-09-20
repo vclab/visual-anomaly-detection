@@ -4,7 +4,7 @@ dataset:
   extensions: null
   format: folder
   image_size: 256
-  input: datasets/oilCap/check/
+  input: media/oilCap/
   mask: null
   model: patchcore
   name: oilCap
@@ -13,7 +13,7 @@ dataset:
   normalization: imagenet
   num_workers: 2
   output: results/patchcore/oilCap/checkimages
-  path: datasets/oilCap/check/
+  path: media/oilCap/
   split_ratio: 0.2
   tag: patchcore_oilCap
   task: classification
